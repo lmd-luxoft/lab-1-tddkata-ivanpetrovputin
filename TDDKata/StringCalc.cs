@@ -1,14 +1,39 @@
 ﻿// NUnit 3 tests
 // See documentation : https://github.com/nunit/docs/wiki/NUnit-Documentation
 using System;
+using System.Linq;
 
 namespace TDDKata
 {
     internal class StringCalc
     {
-        internal int Sum(string v)
+        internal int Sum(string input)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(input))
+                return -1;
+
+            try
+            {
+                var mas = input.Split(',');
+                int sum = 0;
+
+                foreach (var item in mas)
+                {
+                    if (!int.TryParse(item, out int n))
+                        return -1;
+
+                    if (n < 0)
+                        return -1;
+
+                    sum += n;
+                }
+
+                return sum;
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
         }
     }
 }

@@ -20,16 +20,6 @@ namespace TDDKata
         }
 
         [Test]
-        public void SumMoreThanTwoNumbersReturnsMinusOne()
-        {
-            StringCalc calc = new StringCalc();
-
-            int actual = calc.Sum("2,2,2");
-
-            Assert.AreEqual(-1, actual);
-        }
-
-        [Test]
         public void SumEmptyArgumentReturnsMinusOne()
         {
             StringCalc calc = new StringCalc();
