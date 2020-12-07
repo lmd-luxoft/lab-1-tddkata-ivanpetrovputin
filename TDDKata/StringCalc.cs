@@ -14,6 +14,7 @@ namespace TDDKata
 
             try
             {
+                input = input.Replace('\n', ',');
                 var mas = input.Split(',');
                 int sum = 0;
 

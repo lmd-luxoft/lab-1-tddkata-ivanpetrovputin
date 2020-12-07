@@ -16,7 +16,7 @@ namespace TDDKata
 
             int actual = calc.Sum("1,2\n3");
 
-            Assert.AreEqual(3, actual);
+            Assert.AreEqual(6, actual);
         }
 
         [Test]
