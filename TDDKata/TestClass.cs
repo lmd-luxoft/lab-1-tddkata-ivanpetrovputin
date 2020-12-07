@@ -10,6 +10,16 @@ namespace TDDKata
     public class TestClass
     {
         [Test]
+        public void SumOneAndTwoReturnsThree()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("1,2");
+
+            Assert.AreEqual(3, actual);
+        }
+
+        [Test]
         public void SumMoreThanTwoNumbersReturnsMinusOne()
         {
             StringCalc calc = new StringCalc();
@@ -20,7 +30,7 @@ namespace TDDKata
         }
 
         [Test]
-        public void EmptyArgumentReturnsMinusOne()
+        public void SumEmptyArgumentReturnsMinusOne()
         {
             StringCalc calc = new StringCalc();
 
@@ -30,7 +40,7 @@ namespace TDDKata
         }
 
         [Test]
-        public void NullArgumentReturnsMinusOne()
+        public void SumNullArgumentReturnsMinusOne()
         {
             StringCalc calc = new StringCalc();
 
@@ -40,7 +50,7 @@ namespace TDDKata
         }
 
         [Test]
-        public void NegativeArgumentReturnsMinusOne()
+        public void SumNegativeArgumentReturnsMinusOne()
         {
             StringCalc calc = new StringCalc();
 
@@ -50,7 +60,7 @@ namespace TDDKata
         }
 
         [Test]
-        public void NonDigitArgumentReturnsMinusOne()
+        public void SumNonDigitArgumentReturnsMinusOne()
         {
             StringCalc calc = new StringCalc();
 
