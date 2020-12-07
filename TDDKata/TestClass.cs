@@ -64,9 +64,19 @@ namespace TDDKata
         {
             StringCalc calc = new StringCalc();
 
-            int actual = calc.Sum("//.\n2,4.3");
+            int actual = calc.Sum("//.\n2.4.3");
 
             Assert.AreEqual(9, actual);
+        }
+
+        [Test]
+        public void Sum_TwoFourAndThree_WithDotAndDefaultSeparator_Returns_MinusOne()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("//.\n2,4.3");
+
+            Assert.AreEqual(-1, actual);
         }
     }
 }
