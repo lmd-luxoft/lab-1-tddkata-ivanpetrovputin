@@ -10,11 +10,83 @@ namespace TDDKata
     public class TestClass
     {
         [Test]
-        public void SimpleTest()
+        public void Sum_OneTwoAndThree_Returns_Six()
         {
             StringCalc calc = new StringCalc();
-            int value = calc.Sum("2,2");
-            Assert.That(value, Is.EqualTo(4), "Wrong actual value");
+
+            int actual = calc.Sum("1,2\n3");
+
+            Assert.AreEqual(6, actual);
+        }
+
+        [Test]
+        public void Sum_EmptyArgument_Returns_MinusOne()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("");
+
+            Assert.AreEqual(-1, actual);
+        }
+
+        [Test]
+        public void Sum_NullArgument_Returns_MinusOne()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum(null);
+
+            Assert.AreEqual(-1, actual);
+        }
+
+        [Test]
+        public void Sum_NegativeArgument_Returns_MinusOne()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("2,-1");
+
+            Assert.AreEqual(-1, actual);
+        }
+
+        [Test]
+        public void Sum_NonDigitArgument_Returns_MinusOne()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("2,test");
+
+            Assert.AreEqual(-1, actual);
+        }
+
+        [Test]
+        public void Sum_TwoFourAndThree_WithDotSeparator_Returns_Nine()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("//.\n2.4.3");
+
+            Assert.AreEqual(9, actual);
+        }
+
+        [Test]
+        public void Sum_TwoFourAndThree_WithDotAndDefaultSeparator_Returns_MinusOne()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("//.\n2,4.3");
+
+            Assert.AreEqual(-1, actual);
+        }
+
+        [Test]
+        public void Sum_ThousandOneAndTwo_Returns_Two()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("1001,2");
+
+            Assert.AreEqual(2, actual);
         }
     }
 }
