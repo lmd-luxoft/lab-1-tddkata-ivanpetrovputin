@@ -20,7 +20,7 @@ namespace TDDKata
 
                 if (input.StartsWith("//"))
                 {
-                    // Проверяем, что после кастомного сапаратора стоит разделитель \n
+                    // Проверяем, что после кастомного сепаратора стоит разделитель \n
                     var endIndex = input.IndexOf('\n');
                     if (endIndex != 3)
                         return -1;
@@ -45,6 +45,9 @@ namespace TDDKata
 
                     if (n < 0)
                         return -1;
+
+                    if (n > 1000)
+                        continue;
 
                     sum += n;
                 }

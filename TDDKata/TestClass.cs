@@ -78,5 +78,15 @@ namespace TDDKata
 
             Assert.AreEqual(-1, actual);
         }
+
+        [Test]
+        public void Sum_ThousandOneAndTwo_Returns_Two()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("1001,2");
+
+            Assert.AreEqual(2, actual);
+        }
     }
 }
