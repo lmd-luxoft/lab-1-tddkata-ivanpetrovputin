@@ -10,11 +10,53 @@ namespace TDDKata
     public class TestClass
     {
         [Test]
-        public void SimpleTest()
+        public void SumMoreThanTwoNumbersReturnsMinusOne()
         {
             StringCalc calc = new StringCalc();
-            int value = calc.Sum("2,2");
-            Assert.That(value, Is.EqualTo(4), "Wrong actual value");
+
+            int actual = calc.Sum("2,2,2");
+
+            Assert.AreEqual(-1, actual);
+        }
+
+        [Test]
+        public void EmptyArgumentReturnsMinusOne()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("");
+
+            Assert.AreEqual(-1, actual);
+        }
+
+        [Test]
+        public void NullArgumentReturnsMinusOne()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum(null);
+
+            Assert.AreEqual(-1, actual);
+        }
+
+        [Test]
+        public void NegativeArgumentReturnsMinusOne()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("2,-1");
+
+            Assert.AreEqual(-1, actual);
+        }
+
+        [Test]
+        public void NonDigitArgumentReturnsMinusOne()
+        {
+            StringCalc calc = new StringCalc();
+
+            int actual = calc.Sum("2,test");
+
+            Assert.AreEqual(-1, actual);
         }
     }
 }
