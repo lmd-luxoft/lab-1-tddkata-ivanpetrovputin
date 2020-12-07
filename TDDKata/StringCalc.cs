@@ -14,9 +14,29 @@ namespace TDDKata
 
             try
             {
-                input = input.Replace('\n', ',');
-                var mas = input.Split(',');
                 int sum = 0;
+
+                string[] mas;
+
+                if (input.StartsWith("//"))
+                {
+                    // Проверяем, что после кастомного сапаратора стоит разделитель \n
+                    var endIndex = input.IndexOf('\n');
+                    if (endIndex != 3)
+                        return -1;
+
+                    var separator = input[2];
+
+                    // Удаляем начало строки с информацией о кастомной сепараторе
+                    input = input.Substring(4);
+
+                    mas = input.Split(separator);
+                }
+                else
+                {
+                    input = input.Replace('\n', ',');
+                    mas = input.Split(',');
+                }
 
                 foreach (var item in mas)
                 {
