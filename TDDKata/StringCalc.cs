@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace TDDKata
 {
-    internal class StringCalc
+    public class StringCalc
     {
-        internal int Sum(string input)
+        public int Sum(string input)
         {
             if (string.IsNullOrEmpty(input))
                 return -1;
