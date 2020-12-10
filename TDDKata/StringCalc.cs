@@ -7,38 +7,35 @@ namespace TDDKata
 {
     public class StringCalc
     {
+        private static readonly string[] DEFAULT_SEPARATORS = {",", "\n"}; 
+        
+        private static string[] SplitInput(string input)
+        {
+            string numbers = input;
+            string[] separators = DEFAULT_SEPARATORS;
+            if (IsInputWithCustomSeparators(input))
+            {
+                separators = new[] {input[2].ToString()};
+                numbers = input.Substring(4);
+            }
+            return numbers.Split(separators, StringSplitOptions.None);
+        }
+
+        private static bool IsInputWithCustomSeparators(string input)
+        {
+            return input.StartsWith("//") && input.IndexOf('\n') == 3;
+        }
+
         public int Sum(string input)
         {
-            if (string.IsNullOrEmpty(input))
+            if (input == null)
                 return -1;
 
+            string[] items = SplitInput(input);
             try
             {
                 int sum = 0;
-
-                string[] mas;
-
-                if (input.StartsWith("//"))
-                {
-                    // Проверяем, что после кастомного сепаратора стоит разделитель \n
-                    var endIndex = input.IndexOf('\n');
-                    if (endIndex != 3)
-                        return -1;
-
-                    var separator = input[2];
-
-                    // Удаляем начало строки с информацией о кастомной сепараторе
-                    input = input.Substring(4);
-
-                    mas = input.Split(separator);
-                }
-                else
-                {
-                    input = input.Replace('\n', ',');
-                    mas = input.Split(',');
-                }
-
-                foreach (var item in mas)
+                foreach (var item in items)
                 {
                     if (!int.TryParse(item, out int n))
                         return -1;
